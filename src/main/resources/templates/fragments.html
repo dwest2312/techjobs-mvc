@@ -13,19 +13,29 @@
 
 <body>
 
-    <div th:fragment="page-header" class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <a th:href="@{/}" class="navbar-brand">TechJobs</a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a th:href="@{/search}">Search</a></li>
-                    <li><a th:href="@{/list}">List</a></li>
-                </ul>
-            </div>
+<div th:fragment="page-header" class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a th:href="@{/}" class="navbar-brand">TechJobs</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a th:href="@{/search}">Search</a></li>
+                <li><a th:href="@{/list}">List</a></li>
+            </ul>
         </div>
     </div>
+</div>
+
+<div th:fragment="list-results">
+    <h3> <span th:text="${number}"></span> Result(s) found.</h3>
+    <table th:each="job : ${jobs}" class="job-listing">
+        <tr th:each="element : ${job}">
+            <td th:text="${element.key}"></td>
+            <td th:text="${element.value}"></td>
+        </tr>
+    </table>
+</div>
 
 </body>
 </html>
